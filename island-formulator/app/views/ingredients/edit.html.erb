@@ -1,0 +1,10 @@
+<% content_for :title, "Editing ingredient" %>
+
+<div class="w-full p-3 backdrop-blur-md border border-white/30 rounded-xl shadow-lg">
+  <h1 class="font-bold text-4xl text-[#FFBE33]">🅔🅓🅘🅣🅘🅝🅖 🅘🅝🅖🅡🅔🅓🅘🅔🅝🅣...</h1>
+
+  <%= render "form", ingredient: @ingredient %>
+
+  <%= link_to "Show this ingredient", @ingredient, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= link_to "Back to ingredients", ingredients_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+</div>

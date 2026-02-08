@@ -1,0 +1,15 @@
+<% content_for :title, "Showing ingredient" %>
+
+<div class="md:w-2/3 w-full items-center mx-auto text-white bg-[#4B543B] p-5 rounded-md">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <h1 class="font-bold text-5xl text-black">🅘🅝🅖🅡🅔🅓🅘🅔🅝🅣 🅒🅐🅡🅓</h1>
+
+  <%= render @ingredient %>
+
+  <%= link_to "Edit this ingredient", edit_ingredient_path(@ingredient), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-black hover:bg-gray-500 inline-block font-medium" %>
+  <%= link_to "Back to ingredients", ingredients_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-black hover:bg-gray-500 inline-block font-medium" %>
+  <%= button_to "Delete this ingredient", @ingredient, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-[#EB98BB] hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+</div>
