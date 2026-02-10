@@ -12,5 +12,5 @@ set -o vi
 # This prevents circular dependency when native extensions (like herb) run rake
 # System paths must come before project bin to avoid loading project's bin/rake
 export PATH=/usr/local/bin:/usr/bin:/bin:/workspaces/island-formulator/bin:${PATH}
-export RAILS_DEVELOPMENT_HOSTS="$CODESPACE_NAME.app.github.dev"
+export RAILS_DEVELOPMENT_HOSTS="$CODESPACE_NAME-3000.app.github.dev"
 
