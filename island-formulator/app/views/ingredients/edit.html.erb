@@ -1,10 +1,17 @@
 <% content_for :title, "Editing ingredient" %>
 
-<div class="w-full p-3 backdrop-blur-md border border-white/30 rounded-xl shadow-lg">
-  <h1 class="font-bold text-4xl text-[#FFBE33]">🅔🅓🅘🅣🅘🅝🅖 🅘🅝🅖🅡🅔🅓🅘🅔🅝🅣...</h1>
+<div class="w-full flex justify-center mt-10 px-4">
+  <div class="w-full max-w-6xl bg-gray-900/40 backdrop-blur-2xl border border-gray-700/40 shadow-2xl rounded-2xl p-10 text-white">
+    <h1 class="font-bold text-5xl bg-gradient-to-r from-yellow-300 via-amber-400 to-lime-300 bg-clip-text text-transparent text-center mb-8"> 
+      🅔🅓🅘🅣🅘🅝🅖 🅘🅝🅖🅡🅔🅓🅘🅔🅝🅣
+    </h1>
+    <%= render "form", ingredient: @ingredient %>
 
-  <%= render "form", ingredient: @ingredient %>
-
-  <%= link_to "Show this ingredient", @ingredient, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to ingredients", ingredients_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+    <%= link_to "Show this ingredient", 
+      @ingredient, 
+      class: "rounded-md px-4 py-2.5 bg-[#A90DFD] text-white hover:bg-gray-300 font-medium inline-block" %>
+    <%= link_to "Back to ingredients",
+     ingredients_path, 
+     class: "rounded-md px-3.5 py-2.5 bg-[#A90DFD] text-white hover:bg-gray-300 inline-block font-medium" %>
+  </div>
 </div>

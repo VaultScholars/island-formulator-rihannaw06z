@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="min-h-screen bg-transparent">
   <head>
     <title><%= content_for(:title) || "Island Formulator" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,7 +10,6 @@
     <%= csp_meta_tag %>
 
     <%= yield :head %>
-
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
@@ -18,33 +17,59 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class= "h-screen w-full bg-gradient-to-b from-[#5C1E2A] to-[#120309]">
+  <body class="min-h-screen flex flex-col bg-gradient-to-l from-gray-100 via-yellow-400 to-green-600 w-full">
 
-      <div class="w-full">
+    <!-- HEADER -->
     <header class="mt-2 bg-black shadow-lg w-full">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-18">
-          
-          <div class="flex-shrink-0">
-            <a href="#" class="text-4xl font-bold text-white py-2">ℑ𝔰𝔩𝔞𝔫𝔡 𝔉𝔬𝔯𝔪𝔲𝔩𝔞𝔱𝔬𝔯</a>
+
+          <!-- Left side -->
+          <div class="flex-shrink-0 flex items-center gap-4">
+            <%= link_to "🪻ℑ𝔰𝔩𝔞𝔫𝔡 𝔉𝔬𝔯𝔪𝔲𝔩𝔞𝔱𝔬𝔯", root_path,
+                class: "text-4xl font-bold text-white py-2" %>
+
+            <% if authenticated? %>
+              <%= link_to "𝗠𝘆 𝗜𝗻𝗴𝗿𝗲𝗱𝗶𝗲𝗻𝘁𝘀", ingredients_path,
+                  class: "px-3 py-2 text-[#DACC3E] bg-purple-500 hover:text-gray-100 transition-colors rounded-md" %>
+            <% end %>
           </div>
 
+          <!-- Right side -->
           <nav class="hidden md:flex space-x-6">
-            <a href="#" class="text-gray-300 hover:text-white font-medium">𝗛𝗼𝗺𝗲</a>
-            <a href="#" class="text-gray-300 hover:text-white font-medium">𝗛𝗲𝗿𝗯 𝗦𝗵𝗲𝗹𝗳</a>
-            <a href="#" class="text-gray-300 hover:text-white font-medium">𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝘀</a>
-            <a href="#" class="text-gray-300 hover:text-white font-medium">𝗜𝗻𝗳𝗼𝗴𝗿𝗮𝗽𝗵𝗶𝗰𝘀</a>
+            <div class="flex items-center gap-4">
+              <% if authenticated? %>
+                <span class="text-sm text-gray-500">
+                  <%= Current.user.email_address %>
+                </span>
+
+                <%= button_to "Logout", session_path, method: :delete,
+                    class: "px-4 py-2 bg-gray-700 text-gray-300 hover:text-red-500 font-medium rounded-md transition-colors" %>
+
+              <% else %>
+                <div class="flex space-x-2">
+                  <%= link_to "Sign Up", new_user_path,
+                      class: "px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-100 rounded-md transition-colors" %>
+
+                  <%= link_to "Login", new_session_path,
+                      class: "px-4 py-2 text-sm font-medium text-white bg-gray-700 hover:bg-gray-100 rounded-md transition-colors" %>
+                </div>
+              <% end %>
+            </div>
           </nav>
+
         </div>
       </div>
     </header>
 
-    <main class="container mx-auto mt-16 px-5 flex">
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 bg-transparent w-full">
       <%= yield %>
     </main>
 

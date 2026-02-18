@@ -21,7 +21,7 @@ class IngredientsController < ApplicationController
 
   # POST /ingredients or /ingredients.json
   def create
-    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient = current_user.ingredients.build(ingredient_params)
 
     respond_to do |format|
       if @ingredient.save
@@ -65,6 +65,6 @@ class IngredientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ingredient_params
-      params.expect(ingredient: [ :name, :category, :description, :notes ])
+      params.expect(ingredient: [ :name, :category, :description, :notes, tag_ids: [] ])
     end
 end
