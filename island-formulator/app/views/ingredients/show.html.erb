@@ -1,15 +1,40 @@
 <% content_for :title, "Showing ingredient" %>
 
-<div class="md:w-2/3 w-full items-center mx-auto text-white bg-[#4B543B] p-5 rounded-md">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<div class="w-full flex justify-center mt-10 px-4">
+  <div class="w-full max-w-4xl bg-gray-900/40 backdrop-blur-2xl border border-gray-700/40 shadow-2xl rounded-2xl p-10 text-white">
 
-  <h1 class="font-bold text-5xl text-black">🅘🅝🅖🅡🅔🅓🅘🅔🅝🅣 🅒🅐🅡🅓</h1>
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice">
+        <%= notice %>
+      </p>
+    <% end %>
 
-  <%= render @ingredient %>
+    <h1 class="text-5xl font-bold bg-gradient-to-r from-yellow-300 via-amber-400 to-lime-300 bg-clip-text text-transparent">
+      🅘🅝🅖🅡🅔🅓🅘🅔🅝🅣 🅒🅐🅡🅓
+    </h1>
 
-  <%= link_to "Edit this ingredient", edit_ingredient_path(@ingredient), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-black hover:bg-gray-500 inline-block font-medium" %>
-  <%= link_to "Back to ingredients", ingredients_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-black hover:bg-gray-500 inline-block font-medium" %>
-  <%= button_to "Delete this ingredient", @ingredient, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-[#EB98BB] hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+
+    <%= render @ingredient %>
+
+    <div class="mt-8 flex flex-wrap gap-3 justify-center">
+
+      <%= link_to "Edit this ingredient",
+          edit_ingredient_path(@ingredient),
+          class: "rounded-md px-4 py-2.5 bg-[#519872] hover:bg-[#6DB08D] font-medium inline-block" %>
+
+      <%= link_to "Back to ingredients",
+          ingredients_path,
+          class: "rounded-md px-4 py-2.5 bg-[#363249] hover:bg-[#C04CFD] font-medium inline-block" %>
+
+      <%= button_to "Delete this ingredient",
+          @ingredient,
+          method: :delete,
+          form_class: "inline-block",
+          class: "rounded-md px-4 py-2.5 text-white bg-[#B42B18] hover:bg-red-500 font-medium cursor-pointer",
+          data: { turbo_confirm: "Are you sure?" } %>
+
+    </div>
+
+  </div>
 </div>
+
