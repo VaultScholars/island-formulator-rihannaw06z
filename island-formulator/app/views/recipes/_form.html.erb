@@ -1,0 +1,106 @@
+<%= form_with(model: recipe, class: "contents") do |form| %>
+  <% if recipe.errors.any? %>
+    <div
+      id="error_explanation"
+      class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3"
+    >
+      <h2><%= pluralize(recipe.errors.count, "error") %>
+        prohibited this recipe from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5 text-white">
+    <%= form.label :title %>
+    <%= form.text_field :title,
+                    class: [
+                      "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                      {
+                        "border-gray-400 focus:outline-blue-600":
+                          recipe.errors[:title].none?,
+                        "border-red-400 focus:outline-red-600":
+                          recipe.errors[:title].any?,
+                      },
+                    ] %>
+  </div>
+
+  <div class="my-5 text-white">
+    <%= form.label :product_type, "Product Type (e.g. Hair Oil, Body Butter)" %>
+    <%= form.text_field :product_type,
+                    class: [
+                      "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                      {
+                        "border-gray-400 focus:outline-blue-600":
+                          recipe.errors[:product_type].none?,
+                        "border-red-400 focus:outline-red-600":
+                          recipe.errors[:product_type].any?,
+                      },
+                    ] %>
+  </div>
+
+  <div class="my-5 text-white">
+    <%= form.label :method %>
+    <%= form.textarea :method,
+                  rows: 5,
+                  class: [
+                    "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+                    {
+                      "border-gray-400 focus:outline-blue-600":
+                        recipe.errors[:method].none?,
+                      "border-red-400 focus:outline-red-600":
+                        recipe.errors[:method].any?,
+                    },
+                  ] %>
+  </div>
+
+  <div class="my-5">
+    <h3 class="font-bold text-2xl mb-2 text-green-100">𝐈𝐧𝐠𝐫𝐞𝐝𝐢𝐞𝐧𝐭𝐬</h3>
+    <p class="text-sm text-gray-100 mb-4">Select the ingredients and specify the amount needed for this recipe.</p>
+
+    <div class="space-y-4">
+      <%= form.fields_for :recipe_ingredients do |ri_form| %>
+        <div
+          class="
+            flex flex-col md:flex-row md:items-end space-y-2 md:space-y-0 md:space-x-4"
+        >
+          <div class="flex-1 bg-transparent">
+            <%= ri_form.label :ingredient_id, "Ingredient", class: "block text-sm font-medium text-gray-100" %>
+            <%= ri_form.collection_select :ingredient_id,
+                                      Ingredient.all,
+                                      :id,
+                                      :name,
+                                      { prompt: "Select Ingredient" },
+                                      { class: "text-gray-100 block shadow-sm rounded-md border border-green-100 px-3 py-2 mt-2 w-full focus:outline-green-600 bg-gray" } %>
+          </div>
+
+          <div class="w-full md:w-48 bg-transparent">
+            <%= ri_form.label :quantity, "Amount", class: "block text-sm font-medium text-gray-100" %>
+            <%= ri_form.text_field :quantity,
+                               placeholder: "e.g. 50g or 2 tbsp",
+                               class: " text-gray-100 block shadow-sm rounded-md border border-green-100 px-3 py-2 mt-2 w-full focus:outline-green-600" %>
+          </div>
+
+          <% if ri_form.object.persisted? %>
+            <div class="flex items-center pb-2 bg-transparent">
+              <%= ri_form.check_box :_destroy,
+                                class: "h-4 w-4 text-red-600 border-gray-300 rounded" %>
+              <%= ri_form.label :_destroy,
+                            "Remove",
+                            class: "ml-2 text-red-600 text-sm font-medium" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class:
+                  "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-[#479537] hover:bg-[#12B800] text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
