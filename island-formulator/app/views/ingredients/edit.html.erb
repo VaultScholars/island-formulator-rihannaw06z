@@ -7,11 +7,17 @@
     </h1>
     <%= render "form", ingredient: @ingredient %>
 
-    <%= link_to "Show this ingredient", 
-      @ingredient, 
-      class: "rounded-md px-4 py-2.5 bg-[#A90DFD] text-white hover:bg-gray-300 font-medium inline-block" %>
-    <%= link_to "Back to ingredients",
-     ingredients_path, 
-     class: "rounded-md px-3.5 py-2.5 bg-[#A90DFD] text-white hover:bg-gray-300 inline-block font-medium" %>
+    <div class="mt-8 flex justify-end gap-4">
+
+      <%= link_to "Show this ingredient", 
+        @ingredient, 
+        class: "rounded-md px-4 py-2.5 bg-[#A90DFD] text-white hover:bg-gray-300 font-medium inline-block" %>
+
+      <%= link_to "Back to ingredients",
+        ingredients_path, 
+        class: "rounded-md px-3.5 py-2.5 bg-[#A90DFD] text-white hover:bg-gray-300 inline-block font-medium" %>
+
+    </div>
+
   </div>
 </div>
