@@ -1,6 +1,5 @@
 class BatchesController < ApplicationController
   before_action :require_authentication
-  before_action :set_batch, only: %i[ show edit update destroy ]
 
   # GET /batches or /batches.json
   def index

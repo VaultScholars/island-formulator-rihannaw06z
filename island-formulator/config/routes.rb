@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard/show"
   resources :batches
   resources :inventory_items
   resources :recipes
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   resources :batches, only: [ :index, :show, :new, :create, :destroy ]
 
 
-  root "ingredients#index"
+  root "dashboard#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
