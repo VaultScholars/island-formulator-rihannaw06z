@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :batches
+  resources :inventory_items
   resources :recipes
   get "users/new"
   get "users/create"
@@ -7,6 +9,9 @@ Rails.application.routes.draw do
   resources :users, only: [ :new, :create ]
   resources :passwords, param: :token
   resources :ingredients
+
+  resources :inventory_items
+  resources :batches, only: [ :index, :show, :new, :create, :destroy ]
 
 
   root "ingredients#index"

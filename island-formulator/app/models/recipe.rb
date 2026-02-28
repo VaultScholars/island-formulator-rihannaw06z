@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
+  has_many :batches, dependent: :destroy
 
   # This is the magic line for our nested form!
   # It allows us to save ingredients at the same time we save the recipe.
