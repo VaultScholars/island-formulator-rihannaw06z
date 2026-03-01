@@ -1,10 +1,14 @@
 <% content_for :title, "Editing recipe" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing recipe</h1>
+<div class="w-full flex justify-center mt-10 px-4">
+  <div class="w-full max-w-6xl bg-gray-900/40 backdrop-blur-2xl border border-gray-700/40 shadow-2xl rounded-2xl p-10 text-white">
+    <h1 class="font-bold text-5xl bg-gradient-to-r from-yellow-300 via-amber-400 to-teal-300 bg-clip-text text-transparent text-center mb-8">
+      🅔🅓🅘🅣🅘🅝🅖 🅡🅔🅒🅘🅟🅔
+    </h1>
 
-  <%= render "form", recipe: @recipe %>
+    <%= render "form", recipe: @recipe %>
 
-  <%= link_to "Show this recipe", @recipe, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to recipes", recipes_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+    <%= link_to "Show this recipe", @recipe, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 text-gray-800 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+    <%= link_to "Back to recipes", recipes_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 text-gray-800 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  </div>
 </div>

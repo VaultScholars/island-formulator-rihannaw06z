@@ -1,7 +1,11 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New Inventory Item</h1>
+<div class="w-full flex justify-center mt-10 px-4">
+  <div class="w-full max-w-4xl bg-gray-900/40 backdrop-blur-xl border border-gray-700/40 shadow-2xl rounded-2xl p-8">
+    <h1 class="font-bold text-4xl bg-gradient-to-r from-yellow-300 via-amber-100 to-yellow-300 bg-clip-text text-transparent text-center mb-6">
+      🄽🅴🆆 🄸🅽🆅🅴🅽🆃𝕆🆁🆈 🄸🆃🅴🅼
+    </h1>
 
-  <%= render "form", inventory_item: @inventory_item %>
+    <%= render "form", inventory_item: @inventory_item %>
 
-  <%= link_to "Back to inventory", inventory_items_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Back to inventory", inventory_items_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
 </div>

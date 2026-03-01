@@ -1,16 +1,16 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <div class="bg-white shadow rounded-lg p-8 border-l-8 border-green-500">
+<div class="mx-auto md:w-2/3 w-full mt-5 mb-5">
+  <div class="bg-gray-900/60 shadow rounded-lg p-8 border-l-8 border-green-500">
     <div class="flex justify-between items-start mb-8">
       <div>
-        <p class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">Batch Log</p>
-        <h1 class="font-bold text-4xl text-gray-900"><%= @batch.recipe.title %></h1>
-        <p class="text-lg text-gray-600 mt-2">Made on <%= @batch.made_on.strftime("%A, %B %d, %Y") %></p>
+        <p class="text-sm font-bold text-teal-100 uppercase tracking-widest mb-1">Batch Log</p>
+        <h1 class="font-bold text-4xl text-green-400"><%= @batch.recipe.title %></h1>
+        <p class="text-lg text-white mt-2">Made on <%= @batch.made_on.strftime("%A, %B %d, %Y") %></p>
       </div>
-      <%= link_to "View Recipe", @batch.recipe, class: "bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-100" %>
+      <%= link_to "View Recipe", @batch.recipe, class: "bg-teal-50 text-teal-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-100" %>
     </div>
 
     <div class="mb-10">
-      <h2 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Ingredients Used</h2>
+      <h2 class="text-sm font-bold text-gray-200 uppercase tracking-widest mb-4">Ingredients Used</h2>
       <div class="bg-gray-50 rounded-xl p-6">
         <ul class="divide-y divide-gray-200">
           <% @batch.recipe.recipe_ingredients.each do |ri| %>
@@ -25,7 +25,7 @@
 
     <% if @batch.notes.present? %>
       <div class="mb-10">
-        <h2 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Production Notes</h2>
+        <h2 class="text-sm font-bold text-gray-200 uppercase tracking-widest mb-4">Production Notes</h2>
         <div class="prose prose-green max-w-none text-gray-700 bg-green-50 p-6 rounded-xl italic">
           <%= simple_format @batch.notes %>
         </div>
@@ -33,9 +33,9 @@
     <% end %>
 
     <div class="flex justify-between items-center pt-6 border-t border-gray-100">
-      <%= link_to "Back to History", batches_path, class: "text-gray-600 hover:underline font-medium" %>
+      <%= link_to "Back to History", batches_path, class: "text-green-400 hover:underline font-medium" %>
       <div class="flex gap-3">
-        <%= button_to "Delete Log", @batch, method: :delete, class: "text-red-600 text-sm hover:underline", data: { confirm: "Are you sure you want to delete this batch log?" } %>
+        <%= button_to "Delete Log", @batch, method: :delete, class: "text-red-600 bg-pink-200 rounded-lg px-2 py-2 text-sm hover:underline", data: { confirm: "Are you sure you want to delete this batch log?" } %>
       </div>
     </div>
   </div>

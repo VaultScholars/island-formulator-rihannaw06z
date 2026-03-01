@@ -9,5 +9,11 @@ class DashboardController < ApplicationController
       inventory: current_user.inventory_items.count,
       batches: current_user.batches.count
     }
+
+    @completion = if @stats[:recipes] > 0
+    ((@stats[:batches].to_f / @stats[:recipes]) * 100).round
+    else
+      0
+    end
   end
 end
