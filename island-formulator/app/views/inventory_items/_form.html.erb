@@ -42,8 +42,22 @@
   </div>
 
   <div class="my-5 text-white">
-    <%= form.label :size, "Size (e.g. 500ml, 16oz)" %>
-    <%= form.text_field :size, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :quantity, "Quantity (e.g. 500, 16)" %>
+    <%= form.number_field :quantity,
+      step: :any,
+     class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+    
+  <div class="my-5 text-white">
+    <%= form.label :unit, "Unit (e.g. ml, Oz)" %>
+    <%= form.text_field :unit, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+    <div class="my-5 text-white">
+    <%= form.label :price_cents, "Price (e.g. 50.00, 16.23)" %>
+    <%= form.number_field :price_cents,
+    step: :any,
+    class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5 text-white">

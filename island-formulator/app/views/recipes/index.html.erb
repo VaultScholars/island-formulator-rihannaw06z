@@ -27,6 +27,8 @@
               <%= recipe.product_type %>
             </span>
             <p class="text-gray-200 text-sm mt-2"><%= pluralize(recipe.ingredients.count, 'ingredient') %></p>
+            <p class="text-gray-400 text-xs mt-4">Last updated: <%= time_ago_in_words(recipe.updated_at) %> ago</p>
+            <p class="text-green-100 text-xs font-bold mt-1 ml-45">Production Cost: <%= number_to_currency(recipe.total_cost)%>
           </div>
         </div>
       <% end %>

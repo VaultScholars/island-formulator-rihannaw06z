@@ -12,4 +12,14 @@ class Ingredient < ApplicationRecord
   validates :name, presence: true
   validates :category, presence: true
   validates :user, presence: true # ensures every ingredient has user present
+
+  def current_unit_price
+    # Returns the average price per unit for all inventory items of this ingredient that are currently in stock
+    in_stock = inventory_items.where("quantity > 0")
+    return nil if in_stock.empty?
+
+    total_value = in_stock.sum { |item| item.unit_price * item.quantity }
+    total_qty = in_stock.sum(:quantity)
+    total_value/total_qty
+  end
 end

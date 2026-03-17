@@ -93,14 +93,22 @@
                                       :id,
                                       :name,
                                       { prompt: "Select Ingredient" },
-                                      { class: "text-green-900 block shadow-sm rounded-md border border-green-100 px-3 py-2 mt-2 w-full focus:outline-green-600 bg-gray" } %>
+                                      { class: "text-green-900 font-bold block shadow-sm rounded-md border border-green-100 px-3 py-2 mt-2 w-full focus:outline-green-600 bg-gray" } %>
           </div>
 
           <div class="w-full md:w-48 bg-transparent">
-            <%= ri_form.label :quantity, "Amount", class: "block text-sm font-medium text-gray-100" %>
-            <%= ri_form.text_field :quantity,
-                               placeholder: "e.g. 50g or 2 tbsp",
-                               class: " text-gray-100 block shadow-sm rounded-md border border-green-100 px-3 py-2 mt-2 w-full focus:outline-green-600" %>
+            <%= ri_form.label :quantity, "Amount", class: "block text-sm px-18 font-medium text-gray-100" %>
+
+            <div class="flex gap-3 mt-2">
+              <%= ri_form.number_field :quantity,
+                    step: :any,
+                    placeholder: "e.g. 50",
+                    class: "text-gray-100 block shadow-sm rounded-md border border-green-100 px-3 py-2 w-full focus:outline-green-600" %>
+
+              <%= ri_form.text_field :unit,
+                    placeholder: "g, ml, tbsp",
+                    class: "text-gray-100 block shadow-sm rounded-md border border-green-100 px-3 py-2 w-20 focus:outline-green-600" %>
+            </div>
           </div>
 
           <% if ri_form.object.persisted? %>

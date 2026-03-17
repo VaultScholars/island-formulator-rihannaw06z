@@ -1,49 +1,82 @@
 <div class="mt-10 mx-auto md:w-2/3 w-full flex flex-col items-center">
-  <div class="bg-gray-900/30 shadow rounded-lg p-8 w-full">
-    <div class="flex justify-between items-start mb-6">
+  <div class="bg-gray-900/30 backdrop-blur-xl shadow-xl rounded-2xl p-8 w-full border border-white/10">
+
+    <!-- Header -->
+    <div class="flex justify-between items-start mb-8">
       <div>
         <h1 class="font-bold text-3xl text-gray-100"><%= @inventory_item.ingredient.name %></h1>
-        <p class="text-blue-100"><%= @inventory_item.brand %></p>
+        <p class="text-blue-100 text-sm"><%= @inventory_item.brand %></p>
       </div>
-      <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">
+
+      <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
+        Unit Cost: <%= number_to_currency(@inventory_item.unit_price) %> per <%= @inventory_item.unit %>
+      </span>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-8">
+      <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
         <%= @inventory_item.ingredient.category %>
       </span>
     </div>
 
+    <!-- Photo -->
     <% if @inventory_item.photo.attached? %>
-      <div class="mb-6">
-        <%= image_tag @inventory_item.photo, class: "w-full h-64 object-cover rounded-lg shadow-sm" %>
+      <div class="mb-8">
+        <%= image_tag @inventory_item.photo, class: "w-full h-64 object-cover rounded-xl shadow-lg" %>
       </div>
     <% end %>
 
-    <div class="grid grid-cols-2 gap-6 mb-8">
+    <!-- Details Grid -->
+    <div class="grid grid-cols-2 gap-6 mb-10">
+
       <div>
-        <p class="text-sm font-bold text-gray-100 uppercase">Size</p>
-        <p class="text-blue-100 text-lg"><%= @inventory_item.size.presence || "Not specified" %></p>
+        <p class="text-sm font-bold text-gray-100 uppercase tracking-wide">Quantity</p>
+        <p class="text-blue-100 text-lg">
+          <% if @inventory_item.quantity.present? && @inventory_item.unit.present? %>
+            <%= "#{@inventory_item.quantity} #{@inventory_item.unit}" %>
+          <% else %>
+            Not specified
+          <% end %>
+        </p>
       </div>
+
       <div>
-        <p class="text-sm font-bold text-gray-100 uppercase">Location</p>
+        <p class="text-sm font-bold text-gray-100 uppercase tracking-wide">Location</p>
         <p class="text-blue-100 text-lg"><%= @inventory_item.location.presence || "Not specified" %></p>
       </div>
+
       <div>
-        <p class="text-sm font-bold text-gray-100 uppercase">Purchase Date</p>
-        <p class="text-blue-100 text-lg"><%= @inventory_item.purchase_date.strftime("%B %d, %Y") %></p>
+        <p class="text-sm font-bold text-gray-100 uppercase tracking-wide">Purchase Date</p>
+        <p class="text-blue-100 text-lg">
+          <%= @inventory_item.purchase_date&.strftime("%B %d, %Y") || "Not specified" %>
+        </p>
       </div>
+
     </div>
 
+    <!-- Notes -->
     <% if @inventory_item.notes.present? %>
-      <div class="mb-8">
-        <p class="text-sm font-bold text-gray-100 uppercase mb-2">Notes</p>
+      <div class="mb-10">
+        <p class="text-sm font-bold text-gray-100 uppercase tracking-wide mb-2">Notes</p>
         <div class="bg-gray-50 p-4 rounded-lg text-gray-700">
           <%= simple_format @inventory_item.notes %>
         </div>
       </div>
     <% end %>
 
-    <div class="flex gap-2">
-      <%= link_to "Edit this item", edit_inventory_item_path(@inventory_item), class: "rounded-lg py-3 px-5 bg-yellow-200 text-teal-700 font-medium" %>
-      <%= button_to "Remove from inventory", @inventory_item, method: :delete, class: "rounded-lg py-3 px-5 bg-red-50 text-red-600 font-medium", data: { confirm: "Are you sure?" } %>
-      <%= link_to "Back to inventory", inventory_items_path, class: "ml-auto rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+    <!-- Actions -->
+    <div class="flex gap-3 w-full">
+      <%= link_to "Edit Item", edit_inventory_item_path(@inventory_item),
+            class: "rounded-lg py-3 px-5 bg-yellow-200 text-teal-700 font-medium" %>
+
+      <%= button_to "Remove from inventory", @inventory_item, method: :delete,
+            class: "rounded-lg py-3 px-5 bg-red-50 text-red-600 font-medium",
+            data: { confirm: "Are you sure?" } %>
+
+      <%= link_to "Back to inventory", inventory_items_path,
+            class: "ml-auto rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
     </div>
+
   </div>
 </div>

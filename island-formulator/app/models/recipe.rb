@@ -18,6 +18,10 @@ class Recipe < ApplicationRecord
 
   validate :must_have_at_least_one_ingredient
 
+  def total_cost
+    recipe_ingredients.sum(&:line_cost)
+  end
+
   private
   def must_have_at_least_one_ingredient
     if recipe_ingredients.reject(&:marked_for_destruction?).empty?

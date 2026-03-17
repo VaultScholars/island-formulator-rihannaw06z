@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_28_021801) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_15_232836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -79,8 +79,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_28_021801) do
     t.bigint "ingredient_id", null: false
     t.string "location"
     t.text "notes"
+    t.integer "price_cents"
     t.date "purchase_date"
-    t.string "size"
+    t.decimal "quantity"
+    t.string "unit"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["ingredient_id"], name: "index_inventory_items_on_ingredient_id"
@@ -90,8 +92,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_28_021801) do
   create_table "recipe_ingredients", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "ingredient_id", null: false
-    t.string "quantity"
+    t.decimal "quantity", precision: 10, scale: 2
     t.bigint "recipe_id", null: false
+    t.string "unit"
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
