@@ -44,7 +44,11 @@
   <% end %>
 </div>
 
-
+  <div class="my-5 text-white">
+    <%= form.label :low_stock_threshold, "Low Stock Threshold" %>
+    <%= form.number_field :low_stock_threshold, min: 0, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": ingredient.errors[:low_stock_threshold].none?, "border-red-400 focus:outline-red-600": ingredient.errors[:low_stock_threshold].any?}] %>
+  </div>
+  
   <div class="my-5 text-white">
     <%= form.label :description %>
     <%= form.textarea :description, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": ingredient.errors[:description].none?, "border-red-400 focus:outline-red-600": ingredient.errors[:description].any?}] %>

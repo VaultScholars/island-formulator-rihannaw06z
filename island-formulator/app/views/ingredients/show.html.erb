@@ -26,6 +26,16 @@
     
       <div class="flex flex-col justify-left">
         <%= render @ingredient %>
+        <%units = @ingredient.inventory_items.distinct.pluck(:unit)%>
+        <p class="font-bold">In Stock: <%= @ingredient.total_qty %>
+          <% if units.one? && units.present?%>
+            <%= units.first %>
+          <% elseif units.many? %>
+          <span class="text-red-400 font-xs font-bold px-2 background bg-red-100 rounded-full ">!mixed units</span>
+          <% else %>
+          <span class="text-red-400 font-xs font-bold px-2 background bg-red-100 rounded-full ">no unit</span>
+          <% end %>
+        </p>
       </div>
     </div>
 

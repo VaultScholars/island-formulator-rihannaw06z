@@ -73,7 +73,8 @@ class IngredientsController < ApplicationController
       :description,
       :notes,
       :photo,
+      :low_stock_threshold,
       tag_ids: []
-        ])
+    ])
     end
 end

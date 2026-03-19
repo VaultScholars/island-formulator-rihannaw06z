@@ -15,5 +15,7 @@ class DashboardController < ApplicationController
     else
       0
     end
+
+    @low_stock_ingredients = current_user.ingredients.select(&:low_stock?)
   end
 end

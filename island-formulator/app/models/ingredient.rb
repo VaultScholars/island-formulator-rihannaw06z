@@ -22,4 +22,17 @@ class Ingredient < ApplicationRecord
     total_qty = in_stock.sum(:quantity)
     total_value/total_qty
   end
+  def total_qty
+    inventory_items.sum(:quantity)
+  end
+  def unit
+    units = inventory_items.distinct.pluck(:unit)
+    return nil if units.empty?
+    return units.first if units.one?
+    :mixed
+  end
+  def low_stock?
+    return false if low_stock_threshold.blank?
+    total_qty <= low_stock_threshold
+  end
 end

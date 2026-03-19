@@ -91,6 +91,16 @@
 
   </div>
 
+      <!-- Low Stock Alerts -->
+  <div class="absolute top-140 left-150 md-grid-cols-2 gap-2">
+    <% @low_stock_ingredients.each do |ingredient| %>
+      <div class="bg-white/40 text-orange-800 px-3 py-2 rounded-lg mb-2 w-90 shadow-lg shadow-red-300/20 border border-orange-400">
+        Low stock: <%= ingredient.name %>  
+        (<%= ingredient.total_qty %><%= ingredient.unit %> remaining)
+      </div>
+    <% end %>
+  </div>
+
     <!-- Recipes Completed -->
   <div class="absolute bottom-2 right-8 w-50 h-36 bg-black/30 backdrop-blur-xl 
               p-6 rounded-lg shadow-lg shadow-black/10 border border-white/40 
