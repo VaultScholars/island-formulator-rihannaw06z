@@ -14,7 +14,7 @@
     <%= form.label :ingredient_id, "Which Ingredient?" %>
     <%= form.collection_select :ingredient_id, Ingredient.all, :id, :name, 
         { prompt: "Select an ingredient" }, 
-        { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
+        { class: " text-yellow-500 font-bold block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
   </div>
 
   <div class="bg-yellow-200 shadow p-6 rounded-lg mb-5">

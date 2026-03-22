@@ -72,7 +72,7 @@
 
       <%= button_to "Remove from inventory", @inventory_item, method: :delete,
             class: "rounded-lg py-3 px-5 bg-red-50 text-red-600 font-medium",
-            data: { confirm: "Are you sure?" } %>
+            data: { turbo_confirm: "Are you sure?" } %>
 
       <%= link_to "Back to inventory", inventory_items_path,
             class: "ml-auto rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>

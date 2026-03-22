@@ -30,7 +30,7 @@
         <p class="font-bold">In Stock: <%= @ingredient.total_qty %>
           <% if units.one? && units.present?%>
             <%= units.first %>
-          <% elseif units.many? %>
+          <% elsif units.many? %>
           <span class="text-red-400 font-xs font-bold px-2 background bg-red-100 rounded-full ">!mixed units</span>
           <% else %>
           <span class="text-red-400 font-xs font-bold px-2 background bg-red-100 rounded-full ">no unit</span>
@@ -52,6 +52,7 @@
       <%= button_to "Delete this ingredient",
           @ingredient,
           method: :delete,
+          data: { turbo_confirm: "Are you sure you want to delete this ingredient?" },
           form_class: "inline-block",
           class: "rounded-md px-4 py-2.5 text-white bg-[#B42B18] hover:bg-red-500 font-medium cursor-pointer",
           data: { turbo_confirm: "Are you sure?" } %>
