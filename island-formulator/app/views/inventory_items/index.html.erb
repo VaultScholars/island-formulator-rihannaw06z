@@ -23,7 +23,7 @@
             <th class="px-6 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-900">
+        <tbody class="divide-y divide-gray-900 bg-gray-900/20">
           <% @inventory_items.each do |item| %>
             <tr>
               <td class="px-6 py-4 whitespace-nowrap font-medium text-white"><%= item.ingredient.name %></td>
@@ -34,7 +34,7 @@
               <td class="px-6 py-4 whitespace-nowrap font-medium text-white"><%= number_to_currency(item.price_cents) %></td>
               <td class="px-6 py-4 whitespace-nowrap font-medium text-white"><%= item.purchase_date.strftime("%b %d, %Y") %></td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <%= link_to "Show", item, class: "text-blue-600 hover:text-blue-900 mr-3" %>
+                <%= link_to "Show", item, class: "text-bold text-blue-800 hover:text-blue-900 bg bg-gray-400/70 rounded-full px-2 mr-3" %>
                 <%= link_to "Edit", edit_inventory_item_path(item), class: "text-gray-100 hover:text-gray-300" %>
               </td>
             </tr>
