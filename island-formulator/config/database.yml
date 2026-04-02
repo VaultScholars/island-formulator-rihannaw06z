@@ -87,18 +87,23 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: island_formulator_production
-    username: island_formulator
-    password: <%= ENV["ISLAND_FORMULATOR_DATABASE_PASSWORD"] %>
+    database: <%= ENV["DB_NAME"] %>
+    username: <%= ENV["DB_USER"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
+    port: <%= ENV["DB_PORT"] %>
+
   cache:
     <<: *primary_production
-    database: island_formulator_production_cache
+    database: <%= ENV["DB_NAME"] %>_cache
     migrations_paths: db/cache_migrate
+
   queue:
     <<: *primary_production
-    database: island_formulator_production_queue
+    database: <%= ENV["DB_NAME"] %>_queue
     migrations_paths: db/queue_migrate
+
   cable:
     <<: *primary_production
-    database: island_formulator_production_cable
+    database: <%= ENV["DB_NAME"] %>_cable
     migrations_paths: db/cable_migrate
